@@ -1,0 +1,9 @@
+package com.app.dao;
+
+import com.app.pojos.User;
+
+public interface IUserDao {
+
+	public Integer registerUser(User u);
+	public User loginUser(User u);
+}

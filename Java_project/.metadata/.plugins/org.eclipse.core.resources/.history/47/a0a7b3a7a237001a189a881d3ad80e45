@@ -1,0 +1,17 @@
+package com.app.pojos;
+
+public class User {
+	private Integer userId;
+	private String email;
+	public User() {
+		System.out.println("in user pojo class");
+	}
+	public User(String email) {
+		super();
+		
+		this.email = email;
+	}
+	
+	
+
+}

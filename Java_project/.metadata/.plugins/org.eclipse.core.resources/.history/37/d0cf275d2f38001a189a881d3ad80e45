@@ -1,0 +1,11 @@
+package com.app.dao;
+
+import org.springframework.http.ResponseEntity;
+
+import com.app.pojos.User;
+
+public interface IUserDao {
+
+	public Integer registerUser(User u);
+	public ResponseEntity<User> loginUser(User u);
+}

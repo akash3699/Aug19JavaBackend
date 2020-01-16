@@ -1,0 +1,12 @@
+package com.app.controller;
+
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+public class TestController {
+	
+	public TestController() {
+		System.out.println("inside Test Controller");
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Servers/Pivotal tc Server Developer Edition v4.0-config&apos;" deleteContents="false" description="Delete resource &apos;Servers/Pivotal tc Server Developer Edition v4.0-config&apos;" element1="/Servers/Pivotal tc Server Developer Edition v4.0-config" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1579096221851"/>
+</session>
