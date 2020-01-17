@@ -262,3 +262,12 @@
 0:0:0:0:0:0:0:1 - - [16/Jan/2020:20:46:54 +0530] "OPTIONS /DacAug2019/user/userdetails/4 HTTP/1.1" 200 -
 0:0:0:0:0:0:0:1 - - [16/Jan/2020:20:46:54 +0530] "PUT /DacAug2019/user/userdetails/4 HTTP/1.1" 200 11
 0:0:0:0:0:0:0:1 - - [16/Jan/2020:20:46:54 +0530] "GET /DacAug2019/user/userdetails/4 HTTP/1.1" 200 90
+0:0:0:0:0:0:0:1 - - [16/Jan/2020:23:12:21 +0530] "GET /DacAug2019/user/userdetails/4 HTTP/1.1" 200 90
+0:0:0:0:0:0:0:1 - - [16/Jan/2020:23:13:50 +0530] "OPTIONS /DacAug2019/user/register HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [16/Jan/2020:23:13:58 +0530] "POST /DacAug2019/user/register HTTP/1.1" 200 11
+0:0:0:0:0:0:0:1 - - [16/Jan/2020:23:14:17 +0530] "OPTIONS /DacAug2019/user/login HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [16/Jan/2020:23:14:17 +0530] "POST /DacAug2019/user/login HTTP/1.1" 200 125
+0:0:0:0:0:0:0:1 - - [16/Jan/2020:23:14:21 +0530] "GET /DacAug2019/user/userdetails/6 HTTP/1.1" 200 125
+0:0:0:0:0:0:0:1 - - [16/Jan/2020:23:14:49 +0530] "POST /DacAug2019/user/login HTTP/1.1" 200 125
+0:0:0:0:0:0:0:1 - - [16/Jan/2020:23:15:01 +0530] "POST /DacAug2019/user/login HTTP/1.1" 200 125
+0:0:0:0:0:0:0:1 - - [16/Jan/2020:23:15:09 +0530] "GET /DacAug2019/user/userdetails/6 HTTP/1.1" 200 125

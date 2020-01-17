@@ -1,0 +1,24 @@
+package com.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.app.dao.IPolicyDao;
+import com.app.pojos.Policies;
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RestController
+@RequestMapping("/policy")
+public class PolicyController {
+	@Autowired
+	IPolicyDao dao;
+	
+	@PostMapping("/register")
+	public Integer register(@RequestBody Policies p)
+	{
+		System.out.println(p);
+		
+		return dao.registerPolicy(p);
+	}
+
+}

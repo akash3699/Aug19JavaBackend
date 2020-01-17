@@ -1,0 +1,12 @@
+package com.app.dao;
+
+import com.app.pojos.User;
+
+public interface IUserDao {
+
+	public Integer registerUser(User u);
+	public User loginUser(User u);
+	public User getUserDetails(int email);
+	public int updateUserDetails(User user);
+	public int updateUserPasswd(int userId, User user);
+}

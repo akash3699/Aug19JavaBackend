@@ -1,12 +1,23 @@
 package com.app.pojos;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(
 		   
 		   uniqueConstraints = {@UniqueConstraint(columnNames = {"email", "mobile"})}
 		)
+//@Access(AccessType.FIELD)
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +25,16 @@ public class User {
 	private String email;
 	private String mobile;
 	private String passwd;
+	private Date dob;
+	private int roleID=1;
+	private String fname;
+	private String mname;
+	private String lname;
+	private String gender;
+	@Transient
+	@JsonIgnore
+	@JsonBackReference
+	private List<CustomerPolicyDetails> cp = new ArrayList<CustomerPolicyDetails>();
 	
 	
 	public User(Integer userId, String email, String mobile, String passwd) {
@@ -23,6 +44,18 @@ public class User {
 		this.mobile = mobile;
 		this.passwd = passwd;
 	}
+	
+	
+	@ManyToMany(mappedBy = "cpid",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
+	public List<CustomerPolicyDetails> getCp() {
+		return cp;
+	}
+
+	public void setCp(List<CustomerPolicyDetails> cp) {
+		this.cp = cp;
+	}
+
 	@Column(unique = true)
 	public String getMobile() {
 		return mobile;
@@ -45,11 +78,24 @@ public class User {
 		
 		this.email = email;
 	}
+	@Temporal(TemporalType.DATE)
+	public Date getDob() {
+		return dob;
+	}
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
 	public Integer getUserId() {
 		return userId;
 	}
 	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+	public int getRoleID() {
+		return roleID;
+	}
+	public void setRoleID(int roleID) {
+		this.roleID = roleID;
 	}
 	@Column(unique = true)
 	public String getEmail() {
@@ -58,10 +104,39 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String getFname() {
+		return fname;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+	public String getLname() {
+		return lname;
+	}
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", email=" + email + ", mobile=" + mobile + ", passwd=" + passwd + "]";
+		return "User [userId=" + userId + ", email=" + email + ", mobile=" + mobile + ", passwd=" + passwd + ", dob="
+				+ dob + ", roleID=" + roleID + ", fname=" + fname + ", mname=" + mname + ", lname=" + lname
+				+ ", gender=" + gender + "]";
 	}
+	
+	
 	
 	
 	

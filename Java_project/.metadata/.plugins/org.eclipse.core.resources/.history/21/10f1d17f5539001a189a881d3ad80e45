@@ -1,0 +1,79 @@
+package com.app.pojos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+public class Policies {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer policyid;
+	private String policyname;
+	private String policydescription;
+	private int policyduration;
+	private int totalinsuranceamount;
+	
+	
+	public Policies() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Policies(Integer policyid, String policyname, String policydescription, int policyduration,
+			int totalinsuranceamount) {
+		super();
+		this.policyid = policyid;
+		this.policyname = policyname;
+		this.policydescription = policydescription;
+		this.policyduration = policyduration;
+		this.totalinsuranceamount = totalinsuranceamount;
+	}
+
+	
+	
+
+	public Integer getPolicyid() {
+		return policyid;
+	}
+
+	public void setPolicyid(Integer policyid) {
+		this.policyid = policyid;
+	}
+
+	public String getPolicyname() {
+		return policyname;
+	}
+
+	public void setPolicyname(String policyname) {
+		this.policyname = policyname;
+	}
+
+	public String getPolicydescription() {
+		return policydescription;
+	}
+
+	public void setPolicydescription(String policydescription) {
+		this.policydescription = policydescription;
+	}
+
+	public int getPolicyduration() {
+		return policyduration;
+	}
+
+	public void setPolicyduration(int policyduration) {
+		this.policyduration = policyduration;
+	}
+
+	public int getTotalinsuranceamount() {
+		return totalinsuranceamount;
+	}
+
+	public void setTotalinsuranceamount(int totalinsuranceamount) {
+		this.totalinsuranceamount = totalinsuranceamount;
+	}
+	
+	
+}

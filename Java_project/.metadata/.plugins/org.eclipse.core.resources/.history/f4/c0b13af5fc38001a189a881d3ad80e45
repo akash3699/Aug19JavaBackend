@@ -1,0 +1,18 @@
+package com.app.dao;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.pojos.Policies;
+
+public class PolicyDaoImpl implements IPolicyDao {
+	
+	@Autowired
+	SessionFactory sf;
+
+	@Override
+	public Integer registerPolicy(Policies p) {
+		return (Integer) sf.getCurrentSession().save(p);
+	}
+
+}

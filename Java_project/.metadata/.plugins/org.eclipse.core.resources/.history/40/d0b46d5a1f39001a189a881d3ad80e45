@@ -1,0 +1,83 @@
+package com.app.pojos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
+
+@Entity
+public class Policies {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer policyid;
+	private String policyname;
+	private String policydescription;
+	private int policyduration;
+	private int totalinsuranceamount;
+	private List<CustomerPolicyDetails> cp1 = new ArrayList<>();
+	
+	public Policies() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Policies(Integer policyid, String policyname, String policydescription, int policyduration,
+			int totalinsuranceamount) {
+		super();
+		this.policyid = policyid;
+		this.policyname = policyname;
+		this.policydescription = policydescription;
+		this.policyduration = policyduration;
+		this.totalinsuranceamount = totalinsuranceamount;
+	}
+
+	@OneToMany(mappedBy = "policyid")
+	public List<CustomerPolicyDetails> getCp1() {
+		return cp1;
+	}
+
+	public void setCp1(List<CustomerPolicyDetails> cp1) {
+		this.cp1 = cp1;
+	}
+
+	public Integer getPolicyid() {
+		return policyid;
+	}
+
+	public void setPolicyid(Integer policyid) {
+		this.policyid = policyid;
+	}
+
+	public String getPolicyname() {
+		return policyname;
+	}
+
+	public void setPolicyname(String policyname) {
+		this.policyname = policyname;
+	}
+
+	public String getPolicydescription() {
+		return policydescription;
+	}
+
+	public void setPolicydescription(String policydescription) {
+		this.policydescription = policydescription;
+	}
+
+	public int getPolicyduration() {
+		return policyduration;
+	}
+
+	public void setPolicyduration(int policyduration) {
+		this.policyduration = policyduration;
+	}
+
+	public int getTotalinsuranceamount() {
+		return totalinsuranceamount;
+	}
+
+	public void setTotalinsuranceamount(int totalinsuranceamount) {
+		this.totalinsuranceamount = totalinsuranceamount;
+	}
+	
+	
+}

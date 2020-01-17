@@ -1,0 +1,105 @@
+package com.app.pojos;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.internal.Nullable;
+
+@Entity
+public class CustomerPolicyDetails {
+	private Integer cpid;
+	private User userid;
+	private Policies policyid;
+	private Date buydate;
+	private float premiumamout;
+	private int paidpremiumcount;
+	private int totalpremiumcount;
+	private List<PremiumSchedule> premiumschedule= new ArrayList<>();
+	
+	public CustomerPolicyDetails() {
+		// TODO Auto-generated constructor stub
+	}
+	public CustomerPolicyDetails(Date buydate, float premiumamout, int paidpremiumcount, int totalpremiumcount) {
+		super();
+		this.buydate = buydate;
+		this.premiumamout = premiumamout;
+		this.paidpremiumcount = paidpremiumcount;
+		this.totalpremiumcount = totalpremiumcount;
+	}
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Integer getCpid() {
+		return cpid;
+	}
+	public void setCpid(Integer cpid) {
+		this.cpid = cpid;
+	}
+	
+	@OneToMany(mappedBy = "cp1")
+	public List<PremiumSchedule> getPremiumschedule() {
+		return premiumschedule;
+	}
+	public void setPremiumschedule(List<PremiumSchedule> premiumschedule) {
+		this.premiumschedule = premiumschedule;
+	}
+	
+	
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	public User getUserid() {
+		return userid;
+	}
+	public void setUserid(User userid) {
+		this.userid = userid;
+	}
+	
+	
+	@JsonIgnore
+	@ManyToOne
+	public Policies getPolicyid() {
+		return policyid;
+	}
+	public void setPolicyid(Policies policyid) {
+		this.policyid = policyid;
+	}
+	
+	@Temporal(TemporalType.DATE)
+	public Date getBuydate() {
+		return buydate;
+	}
+	public void setBuydate(Date buydate) {
+		this.buydate = buydate;
+	}
+	public float getPremiumamout() {
+		return premiumamout;
+	}
+	public void setPremiumamout(float premiumamout) {
+		this.premiumamout = premiumamout;
+	}
+	public int getPaidpremiumcount() {
+		return paidpremiumcount;
+	}
+	public void setPaidpremiumcount(int paidpremiumcount) {
+		this.paidpremiumcount = paidpremiumcount;
+	}
+	public int getTotalpremiumcount() {
+		return totalpremiumcount;
+	}
+	public void setTotalpremiumcount(int totalpremiumcount) {
+		this.totalpremiumcount = totalpremiumcount;
+	}
+	@Override
+	public String toString() {
+		return "CustomerPolicyDetails [userid=" + userid + ", policyid=" + policyid + ", buydate=" + buydate
+				+ ", premiumamout=" + premiumamout + ", paidpremiumcount=" + paidpremiumcount + ", totalpremiumcount="
+				+ totalpremiumcount + "]";
+	}
+	
+	
+
+}

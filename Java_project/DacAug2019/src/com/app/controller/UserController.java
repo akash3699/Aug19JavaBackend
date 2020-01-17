@@ -1,5 +1,9 @@
 package com.app.controller;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dao.IPolicyDao;
 import com.app.dao.IUserDao;
+import com.app.pojos.CustomerPolicyDetails;
+import com.app.pojos.Policies;
 import com.app.pojos.User;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -26,6 +33,8 @@ public class UserController {
 
 	@Autowired
 	IUserDao iuserDao;
+	@Autowired
+	IPolicyDao ipolicyDao;
 	
 	
 	
@@ -33,8 +42,22 @@ public class UserController {
 	public Integer register(@RequestBody User user)
 	{
 		System.out.println(user);
-		
 		return iuserDao.registerUser(user);
+	}
+	
+	@PostMapping("/buypolicy")
+	public Integer register(@RequestBody CustomerPolicyDetailsWithUserAndPolicy cpdetails)
+	{
+		System.out.println(cpdetails);
+		User u = iuserDao.getUserDetails(cpdetails.getUserid());
+		Policies p = ipolicyDao.getPolicyById(cpdetails.getPolicyid());
+		CustomerPolicyDetails cpd = new CustomerPolicyDetails();
+		cpd.setBuydate(Calendar.getInstance().getTime());
+		cpd.setPremiumamout(cpdetails.getPremiumamout());
+		cpd.setPs(cpdetails.getPs());
+		cpd.setTotalpremiumcount(cpdetails.getTotalpremiumcount());
+		
+		return iuserDao.buyUserPolicy(cpd, u, p);
 	}
 	
 	@PostMapping("/login")

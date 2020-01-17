@@ -1,0 +1,11 @@
+package com.app.controller;
+
+import org.springframework.web.bind.annotation.*;
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RestController
+@RequestMapping("/policy")
+public class PolicyController {
+	
+
+}

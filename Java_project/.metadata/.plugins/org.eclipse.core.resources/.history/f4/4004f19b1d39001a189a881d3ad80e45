@@ -1,0 +1,8 @@
+package com.app.pojos;
+
+import javax.persistence.*;
+
+@Entity
+public class CustomerPolicyDetails {
+
+}

@@ -1,0 +1,25 @@
+package com.app.pojos;
+
+public class Policies {
+	private Integer policyid;
+	private String policyname;
+	private String policydescription;
+	private int policyduration;
+	private int totalinsuranceamount;
+	
+	public Policies() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Policies(Integer policyid, String policyname, String policydescription, int policyduration,
+			int totalinsuranceamount) {
+		super();
+		this.policyid = policyid;
+		this.policyname = policyname;
+		this.policydescription = policydescription;
+		this.policyduration = policyduration;
+		this.totalinsuranceamount = totalinsuranceamount;
+	}
+	
+	
+}

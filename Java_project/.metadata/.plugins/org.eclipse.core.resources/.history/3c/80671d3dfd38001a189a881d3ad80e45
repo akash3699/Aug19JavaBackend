@@ -1,0 +1,8 @@
+package com.app.dao;
+
+import com.app.pojos.Policies;
+
+public interface IPolicyDao {
+	public Integer registerPolicy(Policies p);
+
+}

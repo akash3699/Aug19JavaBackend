@@ -1,0 +1,80 @@
+package com.app.pojos;
+
+import java.util.Date;
+
+import javax.persistence.*;
+
+import com.sun.istack.internal.Nullable;
+
+@Entity
+public class CustomerPolicyDetails {
+	private User userid;
+	private Policies policyid;
+	private Date buydate;
+	private float premiumamout;
+	private int paidpremiumcount;
+	private int totalpremiumcount;
+	public CustomerPolicyDetails() {
+		// TODO Auto-generated constructor stub
+	}
+	public CustomerPolicyDetails(Date buydate, float premiumamout, int paidpremiumcount, int totalpremiumcount) {
+		super();
+		this.buydate = buydate;
+		this.premiumamout = premiumamout;
+		this.paidpremiumcount = paidpremiumcount;
+		this.totalpremiumcount = totalpremiumcount;
+	}
+	@Id
+	@Nullable
+	@ManyToOne
+	public User getUserid() {
+		return userid;
+	}
+	public void setUserid(User userid) {
+		this.userid = userid;
+	}
+	@Id
+	@Nullable
+	@ManyToOne
+	public Policies getPolicyid() {
+		return policyid;
+	}
+	public void setPolicyid(Policies policyid) {
+		this.policyid = policyid;
+	}
+	
+	@Temporal(TemporalType.DATE)
+	public Date getBuydate() {
+		return buydate;
+	}
+	public void setBuydate(Date buydate) {
+		this.buydate = buydate;
+	}
+	public float getPremiumamout() {
+		return premiumamout;
+	}
+	public void setPremiumamout(float premiumamout) {
+		this.premiumamout = premiumamout;
+	}
+	public int getPaidpremiumcount() {
+		return paidpremiumcount;
+	}
+	public void setPaidpremiumcount(int paidpremiumcount) {
+		this.paidpremiumcount = paidpremiumcount;
+	}
+	public int getTotalpremiumcount() {
+		return totalpremiumcount;
+	}
+	public void setTotalpremiumcount(int totalpremiumcount) {
+		this.totalpremiumcount = totalpremiumcount;
+	}
+	@Override
+	public String toString() {
+		return "CustomerPolicyDetails [userid=" + userid + ", policyid=" + policyid + ", buydate=" + buydate
+				+ ", premiumamout=" + premiumamout + ", paidpremiumcount=" + paidpremiumcount + ", totalpremiumcount="
+				+ totalpremiumcount + "]";
+	}
+	
+	
+
+}

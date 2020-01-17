@@ -1,0 +1,66 @@
+package com.app.pojos;
+
+import java.util.Date;
+
+import javax.persistence.*;
+
+@Entity
+public class PremiumSchedule {
+
+	private Integer premiumscheduleid;
+	private Policies policyid;
+	private User userid;
+	private Date premiumdate;
+	
+	public PremiumSchedule() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public PremiumSchedule(Integer premiumscheduleid, Policies policyid, User userid, Date premiumdate) {
+		super();
+		this.premiumscheduleid = premiumscheduleid;
+		this.policyid = policyid;
+		this.userid = userid;
+		this.premiumdate = premiumdate;
+	}
+
+	public Integer getPremiumscheduleid() {
+		return premiumscheduleid;
+	}
+
+	public void setPremiumscheduleid(Integer premiumscheduleid) {
+		this.premiumscheduleid = premiumscheduleid;
+	}
+
+	public Policies getPolicyid() {
+		return policyid;
+	}
+
+	public void setPolicyid(Policies policyid) {
+		this.policyid = policyid;
+	}
+
+	public User getUserid() {
+		return userid;
+	}
+
+	public void setUserid(User userid) {
+		this.userid = userid;
+	}
+	@Temporal(TemporalType.DATE)
+	public Date getPremiumdate() {
+		return premiumdate;
+	}
+
+	public void setPremiumdate(Date premiumdate) {
+		this.premiumdate = premiumdate;
+	}
+
+	@Override
+	public String toString() {
+		return "PremiumSchedule [premiumscheduleid=" + premiumscheduleid + ", policyid=" + policyid + ", userid="
+				+ userid + ", premiumdate=" + premiumdate + "]";
+	}
+	
+	
+}
