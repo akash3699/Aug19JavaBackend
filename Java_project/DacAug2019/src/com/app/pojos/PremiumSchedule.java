@@ -12,6 +12,7 @@ public class PremiumSchedule {
 	private Integer premiumscheduleid;
 	private CustomerPolicyDetails cp1;
 	private Date premiumdate;
+	private PremiumPaidStatus ppstatus=PremiumPaidStatus.UNPAID;
 	
 	public PremiumSchedule() {
 		// TODO Auto-generated constructor stub
@@ -39,6 +40,16 @@ public class PremiumSchedule {
 	@JoinColumn(name="cpdetails")
 	public CustomerPolicyDetails getCp1() {
 		return cp1;
+	}
+	
+	
+	@Enumerated(EnumType.STRING)
+	public PremiumPaidStatus getPpstatus() {
+		return ppstatus;
+	}
+
+	public void setPpstatus(PremiumPaidStatus ppstatus) {
+		this.ppstatus = ppstatus;
 	}
 
 	public void setCp1(CustomerPolicyDetails cp1) {

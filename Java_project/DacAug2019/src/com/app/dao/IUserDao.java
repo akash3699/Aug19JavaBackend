@@ -1,5 +1,7 @@
 package com.app.dao;
 
+import java.util.List;
+
 import com.app.pojos.CustomerPolicyDetails;
 import com.app.pojos.Policies;
 import com.app.pojos.User;
@@ -12,4 +14,5 @@ public interface IUserDao {
 	public int updateUserDetails(User user);
 	public int updateUserPasswd(int userId, User user);
 	public int buyUserPolicy(CustomerPolicyDetails cpdetails,User u,Policies p);
+	public List<CustomerPolicyDetails> getUserPolicyDetails(int userid);
 }

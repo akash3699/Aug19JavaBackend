@@ -3,6 +3,7 @@ package com.app.controller;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,6 +93,14 @@ public class UserController {
 		System.out.println(user);
 		
 		return iuserDao.updateUserPasswd(userId,user);
+	}
+	
+	@GetMapping("/userpolicydetails/{userid}")
+	public List<CustomerPolicyDetails> getUserPolicies(@PathVariable int userid)
+	{
+		System.out.println(userid);
+		
+		return iuserDao.getUserPolicyDetails(userid);
 	}
 	
 }

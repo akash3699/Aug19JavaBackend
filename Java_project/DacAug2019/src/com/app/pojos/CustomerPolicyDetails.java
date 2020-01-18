@@ -14,7 +14,6 @@ public class CustomerPolicyDetails {
 	private Integer cpid;
 	@JsonIgnore
 	private User userid;
-	@JsonIgnore
 	private Policies policyid;
 	private Date buydate;
 	private float premiumamout=0;
@@ -49,6 +48,16 @@ public class CustomerPolicyDetails {
 	}
 	public void setPremiumschedule(List<PremiumSchedule> premiumschedule) {
 		this.premiumschedule = premiumschedule;
+	}
+	
+	public void addPremiumSchedule(PremiumSchedule p1)
+	{
+		this.premiumschedule.add(p1);
+	}
+	
+	public void deletePremiumSchedule(PremiumSchedule p1)
+	{
+		this.premiumschedule.remove(p1);
 	}
 	
 	
