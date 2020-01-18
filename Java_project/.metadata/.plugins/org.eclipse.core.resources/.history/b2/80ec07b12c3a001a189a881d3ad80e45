@@ -1,0 +1,37 @@
+package com.app.dao;
+
+import java.util.List;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.app.pojos.Policies;
+import com.app.pojos.User;
+@Service
+@Transactional
+public class PolicyDaoImpl implements IPolicyDao {
+	
+	@Autowired
+	SessionFactory sf;
+
+	@Override
+	public Integer registerPolicy(Policies p) {
+		return (Integer) sf.getCurrentSession().save(p);
+	}
+
+	@Override
+	public Policies getPolicyById(int pid) {
+		String jpql = "select p from Policies p where p.policyid = :id";
+		return sf.getCurrentSession().createQuery(jpql, Policies.class).setParameter("id", pid)
+				.getSingleResult();
+	}
+
+	@Override
+	public List<Policies> getAllPolicies() {
+		String jpql = "select p from Policies p";
+		return sf.getCurrentSession().createQuery(jpql, Policies.class).getResultList();
+	}
+
+}

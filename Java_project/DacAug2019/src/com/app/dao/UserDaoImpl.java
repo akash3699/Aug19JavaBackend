@@ -164,4 +164,76 @@ public class UserDaoImpl implements IUserDao {
 		String jpql = "select cp from CustomerPolicyDetails cp where cp.userid.userId=:id";
 		return sf.getCurrentSession().createQuery(jpql, CustomerPolicyDetails.class).setParameter("id", userid).getResultList();
 	}
+	
+	static String getAlphaNumericString(int n) 
+    { 
+  
+        // chose a Character random from this String 
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                    + "0123456789"
+                                    + "abcdefghijklmnopqrstuvxyz"; 
+  
+        // create StringBuffer size of AlphaNumericString 
+        StringBuilder sb = new StringBuilder(n); 
+  
+        for (int i = 0; i < n; i++) { 
+  
+            // generate a random number between 
+            // 0 to AlphaNumericString variable length 
+            int index 
+                = (int)(AlphaNumericString.length() 
+                        * Math.random()); 
+  
+            // add Character one by one in end of sb 
+            sb.append(AlphaNumericString 
+                          .charAt(index)); 
+        } 
+  
+        return sb.toString(); 
+    }
+	
+	
+
+	@Override
+	public User getUserByEmail(String email) {
+		String jpql = "select u from User u where u.email = :em";
+		return sf.getCurrentSession().createQuery(jpql, User.class).setParameter("em", email)
+				.getSingleResult();
+	}
+
+	@Override
+	public int forgotUserPassword(String email) {
+		User user = getUserByEmail(email);
+		user.setPasswd(getAlphaNumericString(10));
+		
+		String msg="Your are Password has been changed in Online Policy Management System."+
+				"Your new Password is "+user.getPasswd()+" After Login Please Change the Password";
+				SimpleMailMessage mailMessage = new SimpleMailMessage();
+				mailMessage.setTo(user.getEmail());
+				mailMessage.setSubject("Password Changed on Online Policy Management System");
+				mailMessage.setText(msg);
+				try
+				{
+					mailSender.send(mailMessage);
+				}
+				catch (MailException e) 
+				{
+					System.out.println("inside mail exception");
+					e.printStackTrace();
+					return 0;
+				}
+		
+		
+		
+		return 1;
+	}
+
+	@Override
+	public List<CustomerPolicyDetails> getAllUserPolicyDetails() {
+		String jpql = "select cp from CustomerPolicyDetails cp";
+		return sf.getCurrentSession().createQuery(jpql, CustomerPolicyDetails.class).getResultList();
+	} 
+	
+	
+	
 }

@@ -12,7 +12,11 @@ public interface IUserDao {
 	public User loginUser(User u);
 	public User getUserDetails(int userid);
 	public int updateUserDetails(User user);
+	
 	public int updateUserPasswd(int userId, User user);
 	public int buyUserPolicy(CustomerPolicyDetails cpdetails,User u,Policies p);
 	public List<CustomerPolicyDetails> getUserPolicyDetails(int userid);
+	public int forgotUserPassword(String email);
+	public User getUserByEmail(String email);
+	public List<CustomerPolicyDetails> getAllUserPolicyDetails();
 }

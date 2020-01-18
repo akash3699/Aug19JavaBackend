@@ -38,6 +38,13 @@ public class UserController {
 	IPolicyDao ipolicyDao;
 	
 	
+	@PostMapping("/forgotpassword")
+	public Integer forgotPassword(@RequestBody String email)
+	{
+		System.out.println(email);
+		return iuserDao.forgotUserPassword(email);
+	}
+	
 	
 	@PostMapping("/register")
 	public Integer register(@RequestBody User user)
@@ -101,6 +108,14 @@ public class UserController {
 		System.out.println(userid);
 		
 		return iuserDao.getUserPolicyDetails(userid);
+	}
+	
+	@GetMapping("/alluserpolicydetails")
+	public List<CustomerPolicyDetails> getAllUserPolicies()
+	{
+		System.out.println("inside getAllUserPolicies()");
+		
+		return iuserDao.getAllUserPolicyDetails();
 	}
 	
 }

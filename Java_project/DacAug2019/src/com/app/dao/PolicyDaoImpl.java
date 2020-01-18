@@ -34,4 +34,15 @@ public class PolicyDaoImpl implements IPolicyDao {
 		return sf.getCurrentSession().createQuery(jpql, Policies.class).getResultList();
 	}
 
+	@Override
+	public Integer updatePolicy(Policies p) {
+		Policies policytobeupdated = getPolicyById(p.getPolicyid());
+		policytobeupdated.setPolicydescription(p.getPolicydescription());
+		policytobeupdated.setPolicyduration(p.getPolicyduration());
+		policytobeupdated.setPolicyname(p.getPolicyname());
+		policytobeupdated.setTotalinsuranceamount(p.getTotalinsuranceamount());
+		sf.getCurrentSession().update(policytobeupdated);
+		return 1;
+	}
+
 }

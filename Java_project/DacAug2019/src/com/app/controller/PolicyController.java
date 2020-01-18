@@ -23,6 +23,14 @@ public class PolicyController {
 		return dao.registerPolicy(p);
 	}
 	
+	@PutMapping("/update")
+	public Integer updatePolicy(@RequestBody Policies p)
+	{
+		System.out.println(p);
+		
+		return dao.updatePolicy(p);
+	}
+	
 	@GetMapping("/{pid}")
 	public Policies getPolicyDetails(@PathVariable int pid)
 	{

@@ -77,6 +77,13 @@ public class Policies {
 		this.totalinsuranceamount = totalinsuranceamount;
 	}
 
+	@Override
+	public String toString() {
+		return "Policies [policyid=" + policyid + ", policyname=" + policyname + ", policydescription="
+				+ policydescription + ", policyduration=" + policyduration + ", totalinsuranceamount="
+				+ totalinsuranceamount + "]";
+	}
+
 //	@ManyToOne
 //	@JsonIgnore
 //	public User getUser() {
@@ -86,6 +93,7 @@ public class Policies {
 //	public void setUser(User user) {
 //		this.user = user;
 //	}
+	
 	
 	
 }
