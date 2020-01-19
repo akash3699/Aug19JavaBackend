@@ -1,0 +1,6 @@
+package com.app.pojos;
+
+public static enum PremiumPaidStatus {
+
+	PAID,UNPAID
+}

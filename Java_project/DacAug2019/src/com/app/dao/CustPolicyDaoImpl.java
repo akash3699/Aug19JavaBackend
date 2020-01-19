@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.pojos.CustomerPolicyDetails;
 import com.app.pojos.HistoryOfPaidPremium;
 import com.app.pojos.Policies;
+import com.app.pojos.PremiumFrequency;
 import com.app.pojos.PremiumPaidStatus;
 import com.app.pojos.PremiumSchedule;
 
@@ -71,6 +72,18 @@ public class CustPolicyDaoImpl implements ICustPolicyDao {
 	public CustomerPolicyDetails getCustPolicyDetails(int cpid) {
 		String jpql = "select cp from CustomerPolicyDetails cp where cp.cpid=:id";
 		return sf.getCurrentSession().createQuery(jpql, CustomerPolicyDetails.class).setParameter("id", cpid).getSingleResult();
+	}
+
+	@Override
+	public List<CustomerPolicyDetails> getUserPolicyDetailsWithPaidPremium(int userid) {
+		String jpql = "select cp from CustomerPolicyDetails cp where cp.cpid=:id ";
+		return sf.getCurrentSession().createQuery(jpql, CustomerPolicyDetails.class).setParameter("id", userid).getResultList();
+	}
+
+	@Override
+	public HistoryOfPaidPremium getPaidDateByPremiumSchedule(int psid) {
+		String jpql = "select hpp from HistoryOfPaidPremium hpp where hpp.premiumschedule.premiumscheduleid=:id";
+		return sf.getCurrentSession().createQuery(jpql, HistoryOfPaidPremium.class).setParameter("id", psid).getSingleResult();
 	}
 
 }
