@@ -155,8 +155,6 @@
   <path value="/home/sunbeam/java_help/spring-hibernate-rest-jars/jandex-2.0.3.Final.jar"/>
  </paths>
  <validation>
-  <core validator-id="jsf-verification"/>
-  <core validator-id="jboss.cdi.core"/>
   <el>
    <linked-el length="23" name="%0" offset="968" path="%1"/>
    <linked-el length="22" name="%2" offset="935" path="%1"/>

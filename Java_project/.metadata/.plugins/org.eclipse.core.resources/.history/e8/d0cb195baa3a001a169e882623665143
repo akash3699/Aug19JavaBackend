@@ -1,0 +1,43 @@
+package com.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.app.dao.ICustPolicyDao;
+import com.app.pojos.CustomerPolicyDetails;
+import com.app.pojos.PremiumSchedule;
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RestController
+@RequestMapping("/custpolicy")
+public class CustPolicyController {
+	
+	@Autowired
+	ICustPolicyDao icustpolicydao;
+	
+	
+	public CustPolicyController() {
+		System.out.println("inside CustPolicyController");
+	}
+	
+	
+	@GetMapping("/getnextpremiumschedule/{custpolicyid}")
+	public PremiumSchedule getNextPremiumSchedule(@PathVariable int custpolicyid)
+	{
+		return icustpolicydao.getNextPremiumSchedule(custpolicyid);
+	}
+	
+	@GetMapping("/getcustpolicydetailsbypremiumschedule/{premiumscheduleid}")
+	public CustomerPolicyDetails getCustPolicyDetailsByPremiumSchedule(@PathVariable int premiumscheduleid)
+	{
+		return icustpolicydao.getCustPolicyDetailsByPremiumSchedule(premiumscheduleid);
+	}
+	
+	
+	@GetMapping("/paynextpremiumschedule/{custpolicyid}")
+	public PremiumSchedule PayNextPremiumSchedule(@PathVariable int custpolicyid)
+	{
+		return icustpolicydao.payNextPremiumSchedule(custpolicyid);
+	}
+
+}

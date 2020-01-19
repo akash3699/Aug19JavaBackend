@@ -1,0 +1,25 @@
+package com.app.dao;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.app.pojos.Policies;
+import com.app.pojos.PremiumSchedule;
+
+@Service
+@Transactional
+public class CustPolicyDaoImpl implements ICustPolicyDao {
+
+	@Autowired
+	SessionFactory sf;
+	
+	@Override
+	public PremiumSchedule getNextPremiumSchedule(int custid) {
+		String jpql = "select ps from PremiumSchedule ps where ps.ppstatus='UNPAID' and ps.cp1.cpid = :id order by 1 limt 1";
+		return sf.getCurrentSession().createQuery(jpql, PremiumSchedule.class).setParameter("id", custid)
+				.getSingleResult();
+	}
+
+}

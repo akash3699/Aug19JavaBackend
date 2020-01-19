@@ -1,0 +1,65 @@
+package com.app.pojos;
+
+import java.util.Date;
+
+import javax.persistence.*;
+
+@Entity
+public class HistoryOfPaidPremium {
+	private Integer historyofpsid;
+	private Date paiddate;
+	private PremiumSchedule premiumschedule;
+	
+	public HistoryOfPaidPremium() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public HistoryOfPaidPremium(Integer historyofpsid, Date paiddate) {
+		super();
+		this.historyofpsid = historyofpsid;
+		this.paiddate = paiddate;
+	}
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Integer getHistoryofpsid() {
+		return historyofpsid;
+	}
+
+	public void setHistoryofpsid(Integer historyofpsid) {
+		this.historyofpsid = historyofpsid;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getPaiddate() {
+		return paiddate;
+	}
+
+	public void setPaiddate(Date paiddate) {
+		this.paiddate = paiddate;
+	}
+	
+	
+
+	@OneToOne(mappedBy = "historyofps")
+	public PremiumSchedule getPremiumschedule() {
+		return premiumschedule;
+	}
+
+	public void setPremiumschedule(PremiumSchedule premiumschedule) {
+		this.premiumschedule = premiumschedule;
+	}
+
+	@Override
+	public String toString() {
+		return "HistoryOfPaidPremium [historyofpsid=" + historyofpsid + ", paiddate=" + paiddate + ", premiumschedule="
+				+ premiumschedule + "]";
+	}
+
+	
+	
+	
+	
+
+
+}

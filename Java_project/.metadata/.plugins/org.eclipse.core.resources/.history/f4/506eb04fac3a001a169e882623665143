@@ -1,0 +1,66 @@
+package com.app.dao;
+
+import java.util.List;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.app.pojos.CustomerPolicyDetails;
+import com.app.pojos.Policies;
+import com.app.pojos.PremiumPaidStatus;
+import com.app.pojos.PremiumSchedule;
+
+@Service
+@Transactional
+public class CustPolicyDaoImpl implements ICustPolicyDao {
+
+	@Autowired
+	SessionFactory sf;
+	
+	@Override
+	public PremiumSchedule getNextPremiumSchedule(int custid) {
+//		String jpql = "select ps from PremiumSchedule ps where ps.ppstatus='UNPAID' and ps.cp1.cpid = :id ORDER BY ps.premiumdate";
+		String jpql = "select ps from PremiumSchedule ps where ps.ppstatus='UNPAID' and ps.premiumscheduleid = :id ORDER BY ps.premiumdate";
+		return sf.getCurrentSession().createQuery(jpql, PremiumSchedule.class).setParameter("id", custid).setMaxResults(1)
+				.getSingleResult();
+	}
+	
+	@Override
+	public PremiumSchedule getNextPremiumScheduleByCustPolicyId(int custid) {
+		String jpql = "select ps from PremiumSchedule ps where ps.ppstatus='UNPAID' and ps.cp1.cpid = :id ORDER BY ps.premiumdate";
+//		String jpql = "select ps from PremiumSchedule ps where ps.ppstatus='UNPAID' and ps.premiumscheduleid = :id ORDER BY ps.premiumdate";
+		return sf.getCurrentSession().createQuery(jpql, PremiumSchedule.class).setParameter("id", custid).setMaxResults(1)
+				.getSingleResult();
+	}
+
+	@Override
+	public String payNextPremiumSchedule(int custpolicyid) {
+		PremiumSchedule pstobepaid = getNextPremiumSchedule(custpolicyid);
+		CustomerPolicyDetails cpdetails = pstobepaid.getCp1();
+		if(cpdetails.getPaidpremiumcount()<cpdetails.getTotalpremiumcount())
+		{
+			cpdetails.setPaidpremiumcount(cpdetails.getPaidpremiumcount()+1);
+			pstobepaid.setPpstatus(PremiumPaidStatus.PAID);
+			return pstobepaid.toString();
+		}
+		
+		return null;
+	}
+	
+	@Override
+	public CustomerPolicyDetails getCustPolicyDetailsByPremiumSchedule(int premiumscheduleid) {
+		String jpql = "select ps.cp1 from PremiumSchedule ps where ps.ppstatus='UNPAID' and ps.premiumscheduleid = :id ORDER BY ps.premiumdate";
+		return sf.getCurrentSession().createQuery(jpql, CustomerPolicyDetails.class).setParameter("id", premiumscheduleid).setMaxResults(1)
+				.getSingleResult();
+		
+	}
+	
+	@Override
+	public CustomerPolicyDetails getCustPolicyDetails(int cpid) {
+		String jpql = "select cp from CustomerPolicyDetails cp where cp.cpid=:id";
+		return sf.getCurrentSession().createQuery(jpql, CustomerPolicyDetails.class).setParameter("id", cpid).getSingleResult();
+	}
+
+}

@@ -1,6 +1,8 @@
 package com.app.pojos;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -13,6 +15,7 @@ public class PremiumSchedule {
 	private CustomerPolicyDetails cp1;
 	private Date premiumdate;
 	private PremiumPaidStatus ppstatus=PremiumPaidStatus.UNPAID;
+	private HistoryOfPaidPremium historyofps ;
 	
 	public PremiumSchedule() {
 		// TODO Auto-generated constructor stub
@@ -65,11 +68,24 @@ public class PremiumSchedule {
 		this.premiumdate = premiumdate;
 	}
 
-	@Override
-	public String toString() {
-		return "PremiumSchedule [premiumscheduleid=" + premiumscheduleid + ", premiumdate=" + premiumdate + "]";
+	
+	@JsonIgnore
+	@OneToOne
+	public HistoryOfPaidPremium getHistoryofps() {
+		return historyofps;
 	}
 
+	public void setHistoryofps(HistoryOfPaidPremium historyofps) {
+		this.historyofps = historyofps;
+	}
+
+	@Override
+	public String toString() {
+		return "PremiumSchedule [premiumscheduleid=" + premiumscheduleid + ", cp1=" + cp1 + ", premiumdate="
+				+ premiumdate + ", ppstatus=" + ppstatus + ", historyofps=" + historyofps + "]";
+	}
+
+	
 	
 	
 }

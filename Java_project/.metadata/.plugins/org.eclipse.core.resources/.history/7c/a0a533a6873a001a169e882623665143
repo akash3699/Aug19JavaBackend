@@ -1,0 +1,18 @@
+package com.app.dao;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.app.pojos.PremiumSchedule;
+
+@Service
+@Transactional
+public class CustPolicyDaoImpl implements ICustPolicyDao {
+
+	@Override
+	public PremiumSchedule getNextPremiumSchedule(int custid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

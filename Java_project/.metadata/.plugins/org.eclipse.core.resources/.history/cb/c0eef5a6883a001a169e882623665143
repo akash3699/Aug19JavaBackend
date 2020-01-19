@@ -1,0 +1,14 @@
+package com.app.controller;
+
+import org.springframework.web.bind.annotation.*;
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RestController
+@RequestMapping("/custpolicy")
+public class CustPolicyController {
+	
+	public CustPolicyController() {
+		System.out.println("inside CustPolicyController");
+	}
+
+}
