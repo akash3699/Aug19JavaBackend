@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dao.IPolicyDao;
 import com.app.dao.IUserDao;
+import com.app.pojos.ClaimTracker;
 import com.app.pojos.CustomerPolicyDetails;
 import com.app.pojos.Policies;
 import com.app.pojos.User;
@@ -116,6 +117,22 @@ public class UserController {
 		System.out.println("inside getAllUserPolicies()");
 		
 		return iuserDao.getAllUserPolicyDetails();
+	}
+	
+	@GetMapping("/userclaimtrackerdetails/{userid}")
+	public List<ClaimTracker> getClaimTrackerById(@PathVariable int userid)
+	{
+		System.out.println(userid);
+		
+		return iuserDao.getClaimTrackerDetails(userid);
+	}
+	
+	@PostMapping("/userclaimtrackerdetails/{userid}")
+	public Integer AddClaimTrackerById(@RequestBody ClaimTracker ct ,  @PathVariable int userid)
+	{
+		System.out.println(userid);
+		
+		return iuserDao.AddClaimTrackerDetails(ct, userid);
 	}
 	
 }

@@ -1,0 +1,44 @@
+package com.app.pojos;
+
+import javax.persistence.Entity;
+
+@Entity
+public class ClaimTracker {
+	private Integer ctid;
+	private ClaimStatus claimstatus;
+	private String remarks;
+	public ClaimTracker() {
+		// TODO Auto-generated constructor stub
+	}
+	public ClaimTracker(Integer ctid, ClaimStatus claimstatus, String remarks) {
+		super();
+		this.ctid = ctid;
+		this.claimstatus = claimstatus;
+		this.remarks = remarks;
+	}
+	public Integer getCtid() {
+		return ctid;
+	}
+	public void setCtid(Integer ctid) {
+		this.ctid = ctid;
+	}
+	public ClaimStatus getClaimstatus() {
+		return claimstatus;
+	}
+	public void setClaimstatus(ClaimStatus claimstatus) {
+		this.claimstatus = claimstatus;
+	}
+	public String getRemarks() {
+		return remarks;
+	}
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+	@Override
+	public String toString() {
+		return "ClaimTracker [ctid=" + ctid + ", claimstatus=" + claimstatus + ", remarks=" + remarks + "]";
+	}
+	
+	
+
+}

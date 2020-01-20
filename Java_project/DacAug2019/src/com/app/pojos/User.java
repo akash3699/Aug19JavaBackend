@@ -36,6 +36,11 @@ public class User {
 	@JsonBackReference
 	private List<CustomerPolicyDetails> cp = new ArrayList<CustomerPolicyDetails>();
 	
+	@Transient
+	@JsonIgnore
+	@JsonBackReference
+	private List<ClaimTracker> claimtracker = new ArrayList<>();
+	
 	
 	public User(Integer userId, String email, String mobile, String passwd) {
 		super();
@@ -45,12 +50,28 @@ public class User {
 		this.passwd = passwd;
 	}
 	
-	
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
+	public List<ClaimTracker> getClaimstatus() {
+		return claimtracker;
+	}
+
+	public void setClaimstatus(List<ClaimTracker> claimtracker) {
+		this.claimtracker = claimtracker;
+	}
+
+	public void addClaimTracker(ClaimTracker ct)
+	{
+		ct.setUser(this);
+		this.claimtracker.add(ct);
+	}
+
 	@ManyToMany(mappedBy = "cpid",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
 	public List<CustomerPolicyDetails> getCp() {
 		return cp;
 	}
+
+	
 
 	public void setCp(List<CustomerPolicyDetails> cp) {
 		this.cp = cp;

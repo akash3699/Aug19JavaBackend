@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +24,9 @@ public class CustPolicyDaoImpl implements ICustPolicyDao {
 
 	@Autowired
 	SessionFactory sf;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	@Override
 	public PremiumSchedule getNextPremiumSchedule(int custid) {
@@ -45,6 +51,8 @@ public class CustPolicyDaoImpl implements ICustPolicyDao {
 		if(cpdetails.getPaidpremiumcount()<cpdetails.getTotalpremiumcount())
 		{
 			cpdetails.setPaidpremiumcount(cpdetails.getPaidpremiumcount()+1);
+			
+			
 			pstobepaid.setPpstatus(PremiumPaidStatus.PAID);
 			HistoryOfPaidPremium hpp = new HistoryOfPaidPremium();
 			hpp.setPremiumschedule(pstobepaid);
@@ -53,6 +61,24 @@ public class CustPolicyDaoImpl implements ICustPolicyDao {
 			int index = (int)sf.getCurrentSession().save(hpp);
 			HistoryOfPaidPremium hpptobeupdated =  sf.getCurrentSession().get(HistoryOfPaidPremium.class, index);
 			pstobepaid.setHistoryofps(hpptobeupdated);
+			
+
+			String msg="Paymenyt of Premium for Policy Name: "+cpdetails.getPolicyid().getPolicyname()+" has been received in Online Policy Management System."+
+					"for amount of "+cpdetails.getPremiumamout()+" with transaction id "+index+" on "+ hpptobeupdated.getPaiddate().toLocaleString();
+					SimpleMailMessage mailMessage = new SimpleMailMessage();
+					mailMessage.setTo(cpdetails.getUserid().getEmail());
+					mailMessage.setSubject("Payment Acknowledgement of Policy Premium on Online Policy Management System");
+					mailMessage.setText(msg);
+					try
+					{
+						mailSender.send(mailMessage);
+					}
+					catch (MailException e) 
+					{
+						System.out.println("inside mail exception");
+						e.printStackTrace();
+						return null;
+					}
 			
 			return pstobepaid;
 		}

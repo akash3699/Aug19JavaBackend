@@ -53,3 +53,58 @@ Jan 19, 2020 18:40:40.94 Opening in existing browser session.
 Jan 19, 2020 21:23:26.74 Opening in existing browser session.
 Jan 19, 2020 21:47:39.76 Opening in existing browser session.
 Jan 19, 2020 21:54:25.57 Opening in existing browser session.
+Jan 20, 2020 11:07:34.12 Opening in existing browser session.
+Jan 20, 2020 22:25:59.76 Opening in existing browser session.
+
+Jan 21, 2020 01:27:05.22 NEW SESSION
+Jan 21, 2020 01:27:05.22 Fontconfig error: Cannot load default config file
+Jan 21, 2020 01:27:11.98 [29775:30101:0121/012711.982715:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+Jan 21, 2020 01:27:32.71 [29775:30101:0121/012732.712454:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+Jan 21, 2020 01:27:32.93 [29775:29775:0121/012732.934326:ERROR:account_info_fetcher.cc(60)] OnGetTokenFailure: Connection failed (-106).
+Jan 21, 2020 01:27:33.41 [29775:29775:0121/012733.412880:ERROR:account_tracker.cc(241)] AccessTokenFetched error: Connection failed (-106).
+Jan 21, 2020 01:27:33.64 [29775:29775:0121/012733.647358:ERROR:account_tracker.cc(241)] AccessTokenFetched error: Connection failed (-106).
+Jan 21, 2020 01:27:33.71 [29775:29775:0121/012733.714776:ERROR:account_info_fetcher.cc(60)] OnGetTokenFailure: Connection failed (-106).
+Jan 21, 2020 01:27:34.91 [29775:29775:0121/012734.909891:ERROR:account_info_fetcher.cc(60)] OnGetTokenFailure: Connection failed (-106).
+Jan 21, 2020 01:27:35.49 [29775:29775:0121/012735.495695:ERROR:account_info_fetcher.cc(60)] OnGetTokenFailure: Connection failed (-106).
+Jan 21, 2020 01:27:35.65 [29775:29775:0121/012735.650271:ERROR:account_tracker.cc(241)] AccessTokenFetched error: Connection failed (-106).
+Jan 21, 2020 01:27:35.68 [29775:29775:0121/012735.680610:ERROR:account_tracker.cc(241)] AccessTokenFetched error: Connection failed (-106).
+Jan 21, 2020 01:28:14.44 [29775:30101:0121/012814.444212:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+Jan 21, 2020 01:30:06.44 [29775:30101:0121/013006.448168:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+Jan 21, 2020 01:31:07.31 Opening in existing browser session.
+Jan 21, 2020 01:33:42.02 [29775:30101:0121/013342.023454:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+Jan 21, 2020 01:36:45.65 Opening in existing browser session.
+Jan 21, 2020 01:40:01.90 [29775:30101:0121/014001.900335:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+Jan 21, 2020 01:40:38.81 [29775:29775:0121/014038.814698:ERROR:sharing_service.cc(390)] Device registration failed with transient error
+Jan 21, 2020 01:42:48.75 [29775:29775:0121/014248.758110:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+Jan 21, 2020 01:43:15.05 [29775:29775:0121/014315.052483:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+Jan 21, 2020 01:44:11.02 [29775:29775:0121/014411.020792:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+Jan 21, 2020 01:45:54.57 [29775:29775:0121/014554.577141:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+Jan 21, 2020 01:49:30.99 [29775:29775:0121/014930.995803:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+Jan 21, 2020 01:50:01.93 [29775:30101:0121/015001.934749:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+Jan 21, 2020 01:55:14.32 Opening in existing browser session.
+Jan 21, 2020 01:57:28.75 [29775:29775:0121/015728.758123:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+Jan 21, 2020 01:59:49.78 [29775:29775:0121/015949.780801:ERROR:sharing_service.cc(390)] Device registration failed with transient error
+Jan 21, 2020 02:00:01.94 [29775:30101:0121/020001.944308:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+Jan 21, 2020 02:07:28.76 [29775:29775:0121/020728.761762:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+Jan 21, 2020 02:10:01.96 [29775:30101:0121/021001.960392:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+Jan 21, 2020 02:17:30.03 [29775:29775:0121/021730.017322:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+Jan 21, 2020 02:20:01.96 [29775:30101:0121/022001.969348:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+Jan 21, 2020 02:21:46.13 [29775:29775:0121/022146.139154:ERROR:sharing_service.cc(390)] Device registration failed with transient error
+Jan 21, 2020 02:27:30.03 [29775:29775:0121/022730.039258:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+Jan 21, 2020 02:30:01.97 [29775:30101:0121/023001.973779:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+Jan 21, 2020 02:37:30.04 [29775:29775:0121/023730.040994:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+Jan 21, 2020 02:40:02.13 [29775:30101:0121/024001.978070:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+Jan 21, 2020 02:47:30.04 [29775:29775:0121/024730.045590:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+Jan 21, 2020 02:49:20.04 [29775:30101:0121/024920.048720:ERROR:socket_stream.cc(218)] Closing stream with result -2
+Jan 21, 2020 02:51:40.71 [30430:1:0121/025140.717525:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+Jan 21, 2020 02:51:40.71 [30430:1:0121/025140.718057:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+Jan 21, 2020 02:51:52.33 [30497:1:0121/025152.335704:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+Jan 21, 2020 02:51:52.33 [30497:1:0121/025152.336171:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+Jan 21, 2020 02:51:52.36 [30497:1:0121/025152.366724:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+Jan 21, 2020 02:51:52.36 [30497:1:0121/025152.367252:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+Jan 21, 2020 02:51:52.99 [30497:1:0121/025152.996346:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+Jan 21, 2020 02:51:52.99 [30497:1:0121/025152.996853:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+Jan 21, 2020 02:51:53.28 [30497:1:0121/025153.285236:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+Jan 21, 2020 02:51:53.28 [30497:1:0121/025153.285640:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+Jan 21, 2020 02:51:53.29 [30497:1:0121/025153.290522:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+Jan 21, 2020 02:51:53.29 [30497:1:0121/025153.290788:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.

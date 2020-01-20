@@ -2,6 +2,7 @@ package com.app.dao;
 
 import java.util.List;
 
+import com.app.pojos.ClaimTracker;
 import com.app.pojos.CustomerPolicyDetails;
 import com.app.pojos.Policies;
 import com.app.pojos.User;
@@ -19,4 +20,6 @@ public interface IUserDao {
 	public int forgotUserPassword(String email);
 	public User getUserByEmail(String email);
 	public List<CustomerPolicyDetails> getAllUserPolicyDetails();
+	public List<ClaimTracker> getClaimTrackerDetails(int userid);
+	public Integer AddClaimTrackerDetails(ClaimTracker ct ,int userid);
 }

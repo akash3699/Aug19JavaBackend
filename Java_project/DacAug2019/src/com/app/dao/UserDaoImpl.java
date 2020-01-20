@@ -14,6 +14,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.pojos.ClaimTracker;
 import com.app.pojos.CustomerPolicyDetails;
 import com.app.pojos.Policies;
 import com.app.pojos.PremiumFrequency;
@@ -232,7 +233,25 @@ public class UserDaoImpl implements IUserDao {
 	public List<CustomerPolicyDetails> getAllUserPolicyDetails() {
 		String jpql = "select cp from CustomerPolicyDetails cp";
 		return sf.getCurrentSession().createQuery(jpql, CustomerPolicyDetails.class).getResultList();
+	}
+
+	@Override
+	public List<ClaimTracker> getClaimTrackerDetails(int userid) {
+//		String jpql = "select u.claimtracker from User u where u.userId=:id";
+		String jpql = "select ct from ClaimTracker ct where ct.user.userId=:id";
+		return sf.getCurrentSession().createQuery(jpql, ClaimTracker.class).setParameter("id", userid).getResultList();
+	}
+
+	@Override
+	public Integer AddClaimTrackerDetails(ClaimTracker ct, int userid) {
+		User u = getUserDetails(userid);
+		ct.setUser(u);
+		int ctindex = (int) sf.getCurrentSession().save(ct);
+		ClaimTracker cttobeupdated = sf.getCurrentSession().get(ClaimTracker.class, ctindex);
+		u.addClaimTracker(cttobeupdated);
+		return ctindex;
 	} 
+	
 	
 	
 	
