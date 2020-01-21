@@ -22,4 +22,7 @@ public interface IUserDao {
 	public List<CustomerPolicyDetails> getAllUserPolicyDetails();
 	public List<ClaimTracker> getClaimTrackerDetails(int userid);
 	public Integer AddClaimTrackerDetails(ClaimTracker ct ,int userid);
+	public ClaimTracker getClaimTrackerDetailsByCTid(int claimtrackerid);
+	public Integer UpdateClaimTrackerDetailsByCTid(ClaimTracker ct, int claimtrackerid);
+	public List<ClaimTracker> getAllClaimTrackerDetails();
 }

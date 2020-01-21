@@ -63,8 +63,8 @@ public class CustPolicyDaoImpl implements ICustPolicyDao {
 			pstobepaid.setHistoryofps(hpptobeupdated);
 			
 
-			String msg="Paymenyt of Premium for Policy Name: "+cpdetails.getPolicyid().getPolicyname()+" has been received in Online Policy Management System."+
-					"for amount of "+cpdetails.getPremiumamout()+" with transaction id "+index+" on "+ hpptobeupdated.getPaiddate().toLocaleString();
+			String msg="Paymenyt of Premium for Policy Name: "+cpdetails.getPolicyid().getPolicyname()+" has been received in Online Policy Management System "+
+					" for amount of "+cpdetails.getPremiumamout()+" with transaction id "+index+" on "+ hpptobeupdated.getPaiddate().toLocaleString();
 					SimpleMailMessage mailMessage = new SimpleMailMessage();
 					mailMessage.setTo(cpdetails.getUserid().getEmail());
 					mailMessage.setSubject("Payment Acknowledgement of Policy Premium on Online Policy Management System");

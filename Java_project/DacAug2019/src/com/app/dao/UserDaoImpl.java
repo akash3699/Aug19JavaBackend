@@ -41,8 +41,8 @@ public class UserDaoImpl implements IUserDao {
 			id =(Integer) sf.getCurrentSession().save(u);
 		
 		
-		String msg="Your are Successfully Registered in Online Policy Management System"+
-		"Your details "+u.toString();
+		String msg="Dear "+u.getEmail()+", You are Successfully Registered in Online Policy Management System"+
+		"Your Password is "+u.getPasswd();
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 		mailMessage.setTo(u.getEmail());
 		mailMessage.setSubject("Registration on Online Policy Management System");
@@ -155,6 +155,31 @@ public class UserDaoImpl implements IUserDao {
 			cpd.addPremiumSchedule(p1);
 		}
 		sf.getCurrentSession().update(cpd);
+		
+		
+		String msg="Dear "+u.getEmail()+", You are successfully purchased "+ cpd.getPolicyid().getPolicyname() 
+				+" with Total Insurance Amount of "+cpd.getPolicyid().getTotalinsuranceamount()+" on "+cpd.getBuydate().toLocaleString();
+				SimpleMailMessage mailMessage = new SimpleMailMessage();
+				mailMessage.setTo(u.getEmail());
+				mailMessage.setSubject("Policy Purchased on Online Policy Management System");
+				mailMessage.setText(msg);
+				try
+				{
+					mailSender.send(mailMessage);
+				}
+				catch (MailException e) 
+				{
+					System.out.println("inside mail exception");
+					e.printStackTrace();
+					return 0;
+				}
+		
+		
+		
+		
+		
+		
+		
 		return cpdid;
 	}
 
@@ -250,7 +275,29 @@ public class UserDaoImpl implements IUserDao {
 		ClaimTracker cttobeupdated = sf.getCurrentSession().get(ClaimTracker.class, ctindex);
 		u.addClaimTracker(cttobeupdated);
 		return ctindex;
+	}
+
+	@Override
+	public ClaimTracker getClaimTrackerDetailsByCTid(int claimtrackerid) {
+		// TODO Auto-generated method stub
+		return sf.getCurrentSession().get(ClaimTracker.class, claimtrackerid);
+	}
+
+	@Override
+	public Integer UpdateClaimTrackerDetailsByCTid(ClaimTracker ct, int claimtrackerid) {
+		ClaimTracker cttobeupadted = getClaimTrackerDetailsByCTid(claimtrackerid);
+		cttobeupadted.setClaimstatus(ct.getClaimstatus());
+		cttobeupadted.setRemarks(ct.getRemarks());
+		return 1;
+	}
+
+	@Override
+	public List<ClaimTracker> getAllClaimTrackerDetails() {
+		// TODO Auto-generated method stub
+		String jpql = "select ct from ClaimTracker ct";
+		return sf.getCurrentSession().createQuery(jpql, ClaimTracker.class).getResultList();
 	} 
+	
 	
 	
 	

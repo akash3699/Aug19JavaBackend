@@ -120,11 +120,19 @@ public class UserController {
 	}
 	
 	@GetMapping("/userclaimtrackerdetails/{userid}")
-	public List<ClaimTracker> getClaimTrackerById(@PathVariable int userid)
+	public List<ClaimTracker> getClaimTrackersByUserId(@PathVariable int userid)
 	{
 		System.out.println(userid);
 		
 		return iuserDao.getClaimTrackerDetails(userid);
+	}
+	
+	@GetMapping("/userallclaimtrackerdetails")
+	public List<ClaimTracker> getAllClaimTrackers()
+	{
+//		System.out.println(userid);
+		
+		return iuserDao.getAllClaimTrackerDetails();
 	}
 	
 	@PostMapping("/userclaimtrackerdetails/{userid}")
@@ -133,6 +141,23 @@ public class UserController {
 		System.out.println(userid);
 		
 		return iuserDao.AddClaimTrackerDetails(ct, userid);
+	}
+	
+	@GetMapping("/userclaimtrackerdetailsbyid/{claimtrackerid}")
+	public ClaimTracker getClaimTrackersById(@PathVariable int claimtrackerid)
+	{
+		System.out.println(claimtrackerid);
+		
+		return iuserDao.getClaimTrackerDetailsByCTid(claimtrackerid);
+	}
+	
+	@PostMapping("/userclaimtrackerdetailsbyid/{claimtrackerid}")
+	public Integer UpdateClaimTrackersById(@RequestBody ClaimTracker ct,@PathVariable int claimtrackerid)
+	{
+		System.out.println(claimtrackerid);
+		System.out.println(ct);
+		
+		return iuserDao.UpdateClaimTrackerDetailsByCTid(ct,claimtrackerid);
 	}
 	
 }
